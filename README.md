@@ -17,3 +17,9 @@ Note the following files:
 &nbsp;&nbsp;&nbsp;&nbsp; This file is deployed to the server in the nginx sites-enabled folder:
 
 &nbsp;&nbsp;&nbsp;&nbsp; `/etc/nginx/sites-enabled/fastapi_nginx`
+
+# Deployment
+
+On commits to `main` a github action will run to deploy to the EC2 instance. The project will deploy to:
+
+`/home/ubuntu/nebula-api`
