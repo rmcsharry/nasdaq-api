@@ -33,4 +33,4 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
       - name: Execute main.py
-        run: python main.py
+        run: python3 -m uvicorn main:app
