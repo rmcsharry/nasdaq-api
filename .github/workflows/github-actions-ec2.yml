@@ -33,5 +33,4 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
       - name: Execute main.py
-        run: |
-          python ${{ secrets.TARGET_DIR }}/main.py
+        run: python main.py
