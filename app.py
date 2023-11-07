@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
 @app.get("/")
 def read_root():
-    return {"FastAPI": "works great!"}
+    return {"FastAPI": "works wonderfully!"}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
