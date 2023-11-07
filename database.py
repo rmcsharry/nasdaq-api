@@ -6,7 +6,7 @@ from config import get_settings
 
 settings = get_settings()
 
-DATABASE_URL = f'postgresql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@localhost:6000/{settings.DB_NAME}'
+DATABASE_URL = f'postgresql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@{settings.DB_LOCATION}:{settings.DB_PORT}/{settings.DB_NAME}'
 
 engine = create_engine(DATABASE_URL)
 
