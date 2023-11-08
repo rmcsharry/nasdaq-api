@@ -4,3 +4,4 @@ lib
 
 /venv/*
 .env
+.env.prod
