@@ -22,16 +22,16 @@ def read_item(symbol: str, db: Session = Depends(get_db)):
         for trade in trades:
             yield json.dumps({
                 "trade_date": str(trade.trade_date),
-                "market_center": trade.market_center,
+                #"market_center": trade.market_center,
                 "price": str(trade.price),
                 "quantity": trade.quantity,
-                "sales_conditions": trade.sales_conditions,
-                "listing_venue": trade.listing_venue,
-                "dott": trade.dott,
-                "msn": trade.msn,
-                "omsn": trade.omsn,
-                "sub_market_center": trade.sub_market_center,
-                "cancelled_indicator": trade.cancelled_indicator
+                #"sales_conditions": trade.sales_conditions,
+                #"listing_venue": trade.listing_venue,
+                #"dott": trade.dott,
+                #"msn": trade.msn,
+                #"omsn": trade.omsn,
+                #"sub_market_center": trade.sub_market_center,
+                #"cancelled_indicator": trade.cancelled_indicator
             }) + "\n"
             # send as csv
             # yield f"{trade.symbol}, {trade.price}, {trade.cancelled_indicator}\n"
