@@ -2,6 +2,7 @@ import json
 from re import split
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 from core.trade.models import Trade
 from dependencies import get_db
@@ -16,7 +17,7 @@ def read_item(symbol: str, db: Session = Depends(get_db)):
     # return q
 
     with db as session:
-        trades = session.execute("SELECT * FROM trades WHERE symbol = :symbol", {"symbol": symbol.upper()})
+        trades = session.execute(text("SELECT * FROM trades WHERE symbol = :symbol"), {"symbol": symbol.upper()})
 
     def iter_trades():
         for trade in trades:
