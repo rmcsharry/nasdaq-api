@@ -12,18 +12,25 @@ trade_router = APIRouter()
 @trade_router.get('/trades')
 def read_item(symbol: str, db: Session = Depends(get_db)):
     # This won't work, since we don't have an id column in our table
-    # q = db.query(Trade).filter_by(symbol=symbol.upper()).limit(100).all()
+    # q = db.query(Trade).filter_by(symbol=symbol.upper()).all()
     # return q
 
     with db as session:
-        trades = session.execute("SELECT trade_date, symbol, price, cancelled_indicator FROM trades WHERE symbol = :symbol LIMIT 1000", {"symbol": symbol.upper()}).all()
+        trades = session.execute("SELECT * FROM trades WHERE symbol = :symbol", {"symbol": symbol.upper()})
 
     def iter_trades():
         for trade in trades:
             yield json.dumps({
                 "trade_date": str(trade.trade_date),
-                "symbol": trade.symbol,
+                "market_center": trade.market_center,
                 "price": str(trade.price),
+                "quantity": trade.quantity,
+                "sales_conditions": trade.sales_conditions,
+                "listing_venue": trade.listing_venue,
+                "dott": trade.dott,
+                "msn": trade.msn,
+                "omsn": trade.omsn,
+                "sub_market_center": trade.sub_market_center,
                 "cancelled_indicator": trade.cancelled_indicator
             }) + "\n"
             # send as csv
